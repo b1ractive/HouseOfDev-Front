@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./login.css"
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ const LoginForm = () => {
 
   return (
     
-    <div className="retroForm">
+    <div className="retroForm" >
       <form onSubmit={handleLogin}>
         <h2 className="house">HOUSE OF DEV</h2>
         <h2 className="achicarLetra">Tu nueva vivienda esta aqui.</h2>
@@ -69,7 +70,7 @@ const LoginForm = () => {
           />
         </div>
         <br />
-        <Link to={"/home"}>
+        <Link to={"/"}>
           <button type="submit" className="form-control">
             Iniciar sesión
           </button>
