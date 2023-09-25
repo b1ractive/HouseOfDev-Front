@@ -1,7 +1,3 @@
-:root {
-  background-color: black;
-}
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -13,4 +9,3 @@
   color: aliceblue;
   font-family: "Montserrat", sans-serif;
 }
-
