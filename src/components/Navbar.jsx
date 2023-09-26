@@ -33,15 +33,20 @@ const Navbar = () => {
     setAnchorElUser(null); //  anchorElUser en null para cerrar el menú
   };
 
+  const navbarStyle = {
+    position: "fixed",
+    top: 0,
+    width: "100%", // Ocupa todo el ancho de la pantalla
+    zIndex: 1000,
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="static" style={{ top: 0, zIndex: 1000 }}>
+      <AppBar style={navbarStyle}>
         <Toolbar>
           <Typography
             variant="h5"
-            sx={{ flexGrow: 1, 
-              fontFamily: "Montserrat, sans-serif",
-             }}
+            sx={{ flexGrow: 1, fontFamily: "Montserrat, sans-serif" }}
           >
             <Link to="/" style={{ textDecoration: "none", color: "white" }}>
               HOD.
