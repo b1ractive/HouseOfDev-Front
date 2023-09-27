@@ -7,11 +7,11 @@ import LogOut from "./components/LogOut";
 function App() {
   return (
     <>
-    <Routes>
-      <Route path="/home" element={<LogOut/>}/>
-     <Route path="/"  element={<Home/>} />
-      <Route path="/login" element={<LoginForm/>} />
-    </Routes>
+      <Routes>
+        <Route path="/home" element={<LogOut />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginForm />} />
+      </Routes>
     </>
   );
 }
