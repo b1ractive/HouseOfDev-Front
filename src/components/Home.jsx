@@ -22,8 +22,6 @@ const Home = () => {
         height: "250px",
       }}
     >
-      {/* Increase the priority of the hero background image */}
-      {/* {<img style={{ display: "none" }} src={ImgBack} alt="HouseOfDev" />} */}
       <Box
         sx={{
           position: "absolute",
@@ -60,9 +58,6 @@ const Home = () => {
             >
               Tú nueva vivienda esta aquí.
             </Typography>
-            {/* <Link variant="subtitle1" href="#">
-              Alquileres
-            </Link> */}
           </Box>
         </Grid>
       </Grid>
