@@ -121,16 +121,29 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Mi Perfil</MenuItem>
-              <MenuItem onClick={handleClose}>Favoritos</MenuItem>
-              <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
+              <Link
+                to="/profile"
+                onClick={handleClose}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <MenuItem>Mi Perfil</MenuItem>
+              </Link>
+              <Link
+                to="/favorites"
+                onClick={handleClose}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <MenuItem>Favoritos</MenuItem>
+              </Link>
+              <Link
+                to="/logout"
+                onClick={handleClose}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <MenuItem>Cerrar sesión</MenuItem>
+              </Link>
             </Menu>
           </div>
-
-          {/* </> 
-          ) : (   si un usuario no esta logueado muetro opcion de registar o loguear
-          *         
-          <> */}
 
           <Button color="inherit">
             <Link
@@ -149,9 +162,6 @@ const Navbar = () => {
               Ingresar
             </Link>
           </Button>
-
-          {/*  </>
-          )} */}
         </Toolbar>
       </AppBar>
     </ThemeProvider>
