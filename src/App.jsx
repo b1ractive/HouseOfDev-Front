@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { setUser } from "./redux/userReducer";
 import UserProfileView from "./components/userProfileView";
+import GridProperty from "./components/Grid/Grid";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +36,15 @@ function App() {
 
       <Routes>
         <Route path="/home" element={<LogOut />} />
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <GridProperty />
+            </>
+          }
+        />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<UserProfileView />} />
