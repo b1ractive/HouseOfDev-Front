@@ -13,9 +13,16 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<GridProperty />} />
         <Route path="/home" element={<LogOut />} />
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <GridProperty />
+            </>
+          }
+        />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<Register />} />
       </Routes>
