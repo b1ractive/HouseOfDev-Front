@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import LogOut from "./components/LogOut";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar";
+import GridProperty from "./components/Grid/Grid";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route path="/" element={<GridProperty />} />
         <Route path="/home" element={<LogOut />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginForm />} />
