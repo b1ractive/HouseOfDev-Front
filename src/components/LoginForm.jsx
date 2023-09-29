@@ -20,7 +20,9 @@ const LoginForm = () => {
         })}
         onSubmit={(values, { setSubmitting }) => {
           axios
-            .post("http://localhost:3000/api/auth/login", values)
+            .post("http://localhost:3000/api/auth/login", values, {
+              withCredentials: true,
+            })
             .then(() => {
               navigate("/");
             })
@@ -88,4 +90,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-

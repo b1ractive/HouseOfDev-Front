@@ -15,21 +15,21 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/auth/me`, null, {
+      .get(`http://localhost:3000/api/auth/me`, {
         withCredentials: true,
       })
       .then((response) => {
-        dispatch(setUser(response.data)); // Supongo que response.data contiene la información del usuario.
+        dispatch(setUser(response.data));
       })
       .catch((error) => {
-        console.error("ERROR", error);
+        console.error("ERROR EN EL AXIOS", error);
       });
   }, []);
 
   return (
     <>
-      <Navbar />
-
+{/*       <Navbar />
+ */}
       <Routes>
         <Route path="/home" element={<LogOut />} />
         <Route path="/" element={<Home />} />
