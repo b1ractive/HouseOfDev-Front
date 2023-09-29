@@ -19,7 +19,9 @@ function App() {
         withCredentials: true,
       })
       .then((response) => {
-        dispatch(setUser(response.data));
+        const userData = response.data;
+
+        dispatch(setUser(userData)); // hacer esto en el login
       })
       .catch((error) => {
         console.error("ERROR EN EL AXIOS", error);
@@ -28,8 +30,8 @@ function App() {
 
   return (
     <>
-{/*       <Navbar />
- */}
+      <Navbar />
+
       <Routes>
         <Route path="/home" element={<LogOut />} />
         <Route path="/" element={<Home />} />

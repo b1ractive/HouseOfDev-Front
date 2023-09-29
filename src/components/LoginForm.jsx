@@ -23,11 +23,14 @@ const LoginForm = () => {
             .post("http://localhost:3000/api/auth/login", values, {
               withCredentials: true,
             })
-            .then(() => {
+            .then((res) => {
+              console.log(res.data); // usar dispatch y el payload de redux
+
               navigate("/");
             })
             .catch((err) => {
               console.log(err);
+              console.log("entre al error");
             })
             .finally(() => {
               setSubmitting(false);

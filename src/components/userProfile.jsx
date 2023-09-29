@@ -1,70 +1,99 @@
-import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../redux/userReducer";
-import axios from "axios";
+import React, { useState } from "react";
+import { Paper, TextField, Button, Typography, Avatar } from "@mui/material";
 
-const UserProfile = () => {
-  const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+const UserProfile = ({ user }) => {
+  const [editMode, setEditMode] = useState(false); // Estado para edición
 
-  const handleInputChange = (fieldName, value) => {
-    dispatch(setUser({ ...user, [fieldName]: value }));
+  const handleEditClick = () => {
+    setEditMode(true);
   };
 
-  const handleSaveClick = async () => {
-    /* if (user && user.id) { */
-    try {
-      // Realiza la solicitud PUT solo si user.id está definido
-      const response = await axios.put(`http://localhost:3000/api/editUser/1`);
-      // Manejar la respuesta aquí
-      console.log("Solicitud PUT exitosa:", response.data);
-    } catch (error) {
-      console.error("Error al realizar la solicitud PUT:", error);
-    }
-    /*   } else {
-      console.error("El ID del usuario no está definido o es inválido.");
-    } */
+  const handleSaveChanges = () => {
+    // ver como implementar esta fucnion para guardar los cambios
+    setEditMode(false);
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={user.name}
-        placeholder="Nombre"
-        onChange={(e) => handleInputChange("name", e.target.value)}
+    <Paper
+      style={{
+        maxWidth: 600,
+        margin: "0 auto",
+        padding: "32px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        marginTop: "70px",
+      }}
+      elevation={3}
+    >
+      <Avatar
+        style={{
+          width: "80px",
+          height: "80px",
+          marginBottom: "16px",
+        }}
+        alt="User Avatar"
       />
-      <input
-        type="text"
-        value={user.last_name}
-        placeholder="Apellido"
-        onChange={(e) => handleInputChange("last_name", e.target.value)}
-      />
-      <input
-        type="email"
-        value={user.email}
-        placeholder="Email"
-        onChange={(e) => handleInputChange("email", e.target.value)}
-      />
-      <input
-        type="text"
-        value={user.telephone}
-        placeholder="Teléfono"
-        onChange={(e) => handleInputChange("telephone", e.target.value)}
-      />
-      <input
-        type="password"
-        value={user.password}
-        placeholder="Contraseña"
-        onChange={(e) => handleInputChange("password", e.target.value)}
-      />
-      <button onClick={handleSaveClick}>Guardar</button>
-      <input
-        type="text"
-        value={user.id}
-        placeholder="ID"
-        onChange={(e) => handleInputChange("ID", e.target.value)}
-      />
-    </div>
+      <Typography variant="h5" gutterBottom>
+        Perfil de Usuario
+      </Typography>
+      <form style={{ width: "100%", marginTop: "8px" }}>
+        <TextField
+          style={{ marginBottom: "16px" }}
+          label="Nombre"
+          variant="outlined"
+          fullWidth
+          value={user.name}
+          disabled={!editMode}
+        />
+        <TextField
+          style={{ marginBottom: "16px" }}
+          label="Apellido"
+          variant="outlined"
+          fullWidth
+          value={user.last_name}
+          disabled={!editMode}
+        />
+        <TextField
+          style={{ marginBottom: "16px" }}
+          label="Email"
+          variant="outlined"
+          fullWidth
+          value={user.email}
+          disabled={!editMode}
+        />
+        <TextField
+          style={{ marginBottom: "16px" }}
+          label="Teléfono"
+          variant="outlined"
+          fullWidth
+          value={user.telephone}
+          disabled={!editMode}
+        />
+        <TextField
+          style={{ marginBottom: "16px" }}
+          label="Contraseña"
+          type="password"
+          variant="outlined"
+          fullWidth
+          value={user.password}
+          disabled={!editMode}
+        />
+        {editMode ? (
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSaveChanges}
+          >
+            Guardar Cambios
+          </Button>
+        ) : (
+          <Button variant="contained" color="primary" onClick={handleEditClick}>
+            Editar Perfil
+          </Button>
+        )}
+      </form>
+    </Paper>
   );
 };
 
