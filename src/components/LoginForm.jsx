@@ -20,12 +20,17 @@ const LoginForm = () => {
         })}
         onSubmit={(values, { setSubmitting }) => {
           axios
-            .post("http://localhost:3000/api/auth/login", values)
-            .then(() => {
+            .post("http://localhost:3000/api/auth/login", values, {
+              withCredentials: true,
+            })
+            .then((res) => {
+              console.log(res.data); // usar dispatch y el payload de redux
+
               navigate("/");
             })
             .catch((err) => {
               console.log(err);
+              console.log("entre al error");
             })
             .finally(() => {
               setSubmitting(false);
@@ -88,4 +93,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
