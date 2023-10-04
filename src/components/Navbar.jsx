@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userReducer";
+import PersonOffIcon from "@mui/icons-material/PersonOff";
 
 const theme = createTheme({
   palette: {
@@ -91,74 +92,111 @@ const Navbar = () => {
               HOD.
             </Link>
           </Typography>
-          <Button color="inherit">
+          <Button
+            color="inherit"
+            sx={{
+              textDecoration: "none",
+              color: "white",
+              fontWeight: "bold",
+              transition: "background-color 0.3s",
+              "&:hover": {
+                backgroundColor: "rgba(200, 200, 200, 0.2)", //  el último valor para ajustar la transparencia
+              },
+            }}
+          >
             <Link
               to="/en-venta"
               style={{
                 textDecoration: "none",
                 color: "white",
-                fontWeight: "bold",
-                transition: "background-color 0.3s",
               }}
             >
               En Venta
             </Link>
           </Button>
-          <Button color="inherit">
+          <Button
+            color="inherit"
+            sx={{
+              textDecoration: "none",
+              color: "white",
+              fontWeight: "bold",
+              transition: "background-color 0.3s",
+              "&:hover": {
+                backgroundColor: "rgba(200, 200, 200, 0.2)",
+              },
+            }}
+          >
             <Link
               to="/alquiler"
               style={{
                 textDecoration: "none",
                 color: "white",
-                fontWeight: "bold",
               }}
             >
               Alquiler
             </Link>
           </Button>
-          <Button color="inherit">
-            <Link
-              to="/agenda"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                fontWeight: "bold",
-              }}
-            >
-              Agenda tu Visita
-            </Link>
-          </Button>
-          <Button color="inherit">
+          <Button
+            color="inherit"
+            sx={{
+              textDecoration: "none",
+              color: "white",
+              fontWeight: "bold",
+              transition: "background-color 0.3s",
+              "&:hover": {
+                backgroundColor: "rgba(200, 200, 200, 0.2)",
+              },
+            }}
+          >
             <Link
               to="/servicios"
               style={{
                 textDecoration: "none",
                 color: "white",
-                fontWeight: "bold",
               }}
             >
               Nuestros Servicios
             </Link>
           </Button>
-          <Button color="inherit">
+          <Button
+            color="inherit"
+            sx={{
+              textDecoration: "none",
+              color: "white",
+              fontWeight: "bold",
+              transition: "background-color 0.3s",
+              "&:hover": {
+                backgroundColor: "rgba(200, 200, 200, 0.2)",
+              },
+            }}
+          >
             <Link
               to="/nosotros"
               style={{
                 textDecoration: "none",
                 color: "white",
-                fontWeight: "bold",
               }}
             >
               Nosotros
             </Link>
           </Button>
-          <Button color="inherit">
+          <Button
+            color="inherit"
+            sx={{
+              textDecoration: "none",
+              color: "white",
+              fontWeight: "bold",
+              transition: "background-color 0.3s",
+              "&:hover": {
+                backgroundColor: "rgba(200, 200, 200, 0.2)",
+              },
+            }}
+          >
             <Link
               to="/contacto"
               style={{
                 textDecoration: "none",
                 color: "white",
-                fontWeight: "bold",
               }}
             >
               Contacto
@@ -174,7 +212,10 @@ const Navbar = () => {
               >
                 <Avatar
                   alt="User Avatar"
-                  style={{ backgroundColor: "#FF7733" }}
+                  style={{
+                    backgroundColor: "#FF4733",
+                    border: "2px solid white",
+                  }}
                 />
               </IconButton>
               <Menu
@@ -189,21 +230,46 @@ const Navbar = () => {
                   onClick={handleClose}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem>Mi Perfil</MenuItem>
+                  <MenuItem
+                    sx={{
+                      "&:hover": {
+                        backgroundColor: "#E0E0E0", // Cambia a tu color de hover deseado
+                      },
+                    }}
+                  >
+                    Mi Perfil
+                  </MenuItem>
                 </Link>
+
                 <Link
                   to="/favorites"
                   onClick={handleClose}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem>Favoritos</MenuItem>
+                  <MenuItem
+                    sx={{
+                      "&:hover": {
+                        backgroundColor: "#E0E0E0",
+                      },
+                    }}
+                  >
+                    Favoritos
+                  </MenuItem>
                 </Link>
                 <Link
                   to="/"
                   onClick={handleLogout}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem>Cerrar sesión</MenuItem>
+                  <MenuItem
+                    sx={{
+                      "&:hover": {
+                        backgroundColor: "#E0E0E0",
+                      },
+                    }}
+                  >
+                    Cerrar sesión
+                  </MenuItem>
                 </Link>
               </Menu>
             </div>
@@ -217,8 +283,13 @@ const Navbar = () => {
               >
                 <Avatar
                   alt="User Avatar"
-                  style={{ backgroundColor: "#FF7733" }}
-                />
+                  style={{
+                    backgroundColor: "#FF4733",
+                    border: "2px solid white",
+                  }}
+                >
+                  <PersonOffIcon />
+                </Avatar>
               </IconButton>
               <Menu
                 id="guest-menu"
@@ -232,14 +303,30 @@ const Navbar = () => {
                   onClick={handleClose}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem>Registrarse</MenuItem>
+                  <MenuItem
+                    sx={{
+                      "&:hover": {
+                        backgroundColor: "#E0E0E0",
+                      },
+                    }}
+                  >
+                    Registrarse
+                  </MenuItem>
                 </Link>
                 <Link
                   to="/login"
                   onClick={handleClose}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem>Ingresar</MenuItem>
+                  <MenuItem
+                    sx={{
+                      "&:hover": {
+                        backgroundColor: "#E0E0E0",
+                      },
+                    }}
+                  >
+                    Ingresar
+                  </MenuItem>
                 </Link>
               </Menu>
             </div>
