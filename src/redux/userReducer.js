@@ -13,7 +13,12 @@ export const userReducer = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action) => (state = action.payload),
+    setUser: (state, action) => {
+      return {
+        ...state,
+        ...action.payload, // Esto fusionará los datos del usuario en el estado actual
+      };
+    },
   },
 });
 
