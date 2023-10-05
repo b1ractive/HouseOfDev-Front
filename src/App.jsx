@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Home from "./components/Home";
-import LogOut from "./components/LogOut";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
@@ -11,7 +10,6 @@ import { setUser } from "./redux/userReducer";
 import UserProfileView from "./components/userProfileView";
 import GridProperty from "./components/Grid/Grid";
 import DescriptionProperty from "./components/DescriptionProperty";
-
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +34,6 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/home" element={<LogOut />} />
         <Route
           path="/"
           element={
@@ -48,11 +45,8 @@ function App() {
         />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<Register />} />
-<<<<<<< HEAD
         <Route path="/property/:propertyId" element={<DescriptionProperty />} />
-=======
         <Route path="/profile" element={<UserProfileView />} />
->>>>>>> a44faf6be95a066e9416a5a6ee92f3dd43f35525
       </Routes>
     </>
   );
