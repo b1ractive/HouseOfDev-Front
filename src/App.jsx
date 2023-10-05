@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Home from "./components/Home";
-import LogOut from "./components/LogOut";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
@@ -35,7 +34,6 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/home" element={<LogOut />} />
         <Route
           path="/"
           element={
