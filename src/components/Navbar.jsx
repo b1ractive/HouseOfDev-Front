@@ -32,8 +32,6 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log("Valor de 'user' en Navbar:", user);
-
   const handleClick = (e) => {
     setAnchorElUser(e.currentTarget);
   };
