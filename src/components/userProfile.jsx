@@ -70,15 +70,6 @@ const UserProfile = ({ user }) => {
           value={user.telephone}
           disabled={!editMode}
         />
-        <TextField
-          style={{ marginBottom: "16px" }}
-          label="Contraseña"
-          type="password"
-          variant="outlined"
-          fullWidth
-          value={user.password}
-          disabled={!editMode}
-        />
         {editMode ? (
           <Button
             variant="contained"
