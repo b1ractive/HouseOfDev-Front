@@ -12,7 +12,6 @@ import UserProfileView from "./components/userProfileView";
 import GridProperty from "./components/Grid/Grid";
 import DescriptionProperty from "./components/DescriptionProperty";
 
-
 function App() {
   const dispatch = useDispatch();
 
@@ -48,11 +47,8 @@ function App() {
         />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<Register />} />
-<<<<<<< HEAD
         <Route path="/property/:propertyId" element={<DescriptionProperty />} />
-=======
         <Route path="/profile" element={<UserProfileView />} />
->>>>>>> a44faf6be95a066e9416a5a6ee92f3dd43f35525
       </Routes>
     </>
   );
