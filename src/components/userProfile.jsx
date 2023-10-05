@@ -105,9 +105,13 @@ const UserProfile = () => {
           label="Teléfono"
           variant="outlined"
           fullWidth
+
+          value={user.telephone}
+
           name="telephone"
           value={userTelephone || user.telephone}
           onChange={(e) => setUserTelephone(e.target.value)}
+
           disabled={!editMode}
         />
         {editMode ? (
