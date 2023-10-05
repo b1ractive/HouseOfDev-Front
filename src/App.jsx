@@ -6,6 +6,7 @@ import LogOut from "./components/LogOut";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar";
 import GridProperty from "./components/Grid/Grid";
+import DescriptionProperty from "./components/DescriptionProperty";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/property/:propertyId" element={<DescriptionProperty />} />
       </Routes>
     </>
   );

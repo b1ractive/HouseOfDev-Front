@@ -10,16 +10,15 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const GridProperty = () => {
   const [propertyData, setPropertyData] = useState([]);
 
   useEffect(() => {
-    // Simula la carga de datos desde una API en localhost
     axios
       .get("http://localhost:3000/api/property/", { withCredentials: true })
       .then((response) => {
-        // Accede a la data directamente en la respuesta de Axios
         setPropertyData(response.data);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -28,11 +27,11 @@ const GridProperty = () => {
   const limitedPropertyData = propertyData.slice(0, 4);
 
   return (
-    <Container sx={{ py: 12 }} maxWidth="md">
+    <Container sx={{ py: 12 }}>
       <Grid container spacing={4}>
         {limitedPropertyData.map((property) => (
-          <Grid item xs={12} md={9}>
-            <CardActionArea component="a" href="#">
+          <Grid item xs={12} md={6} key={property.id}>
+            <CardActionArea href={`/property/${property.id}`}>
               <Card sx={{ display: "flex" }}>
                 <CardMedia
                   component="img"
