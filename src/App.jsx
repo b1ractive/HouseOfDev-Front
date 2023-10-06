@@ -10,6 +10,7 @@ import { setUser } from "./redux/userReducer";
 import UserProfileView from "./components/userProfileView";
 import GridProperty from "./components/Grid/Grid";
 import DescriptionProperty from "./components/DescriptionProperty";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,8 @@ function App() {
         <Route path="/property/:propertyId" element={<DescriptionProperty />} />
         <Route path="/profile" element={<UserProfileView />} />
       </Routes>
+
+      <Footer />
     </>
   );
 }
