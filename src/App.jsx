@@ -10,6 +10,8 @@ import { setUser } from "./redux/userReducer";
 import UserProfileView from "./components/userProfileView";
 import GridProperty from "./components/Grid/Grid";
 import DescriptionProperty from "./components/DescriptionProperty";
+import OnSellProperty from "./components/onSellProperty";
+import OnRentProperty from "./components/onRentProperty";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +49,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/property/:propertyId" element={<DescriptionProperty />} />
         <Route path="/profile" element={<UserProfileView />} />
+        <Route path="/venta" element={<OnSellProperty />} />
+        <Route path="/alquiler" element={<OnRentProperty />} />
       </Routes>
     </>
   );
