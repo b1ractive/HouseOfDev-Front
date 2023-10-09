@@ -17,9 +17,7 @@ const UserProfile = () => {
     setEditMode(true);
   };
 
-  const handleSaveChanges = () => {
-    // Realizar la solicitud PUT al backend con los datos actualizados
-
+  const handleSaveChanges = () => {  
     const editedUser = {
       name: userName || user.name,
       last_name: userLastName || user.last_name,
@@ -103,12 +101,11 @@ const UserProfile = () => {
         <TextField
           style={{ marginBottom: "16px" }}
           label="Teléfono"
-          variant="outlined"
-          fullWidth          
+          variant="outlined"               
+          fullWidth
           name="telephone"
           value={userTelephone || user.telephone}
           onChange={(e) => setUserTelephone(e.target.value)}
-
           disabled={!editMode}
         />
         {editMode ? (

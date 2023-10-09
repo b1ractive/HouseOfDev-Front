@@ -12,6 +12,7 @@ import GridProperty from "./components/Grid/Grid";
 import DescriptionProperty from "./components/DescriptionProperty";
 import OnSellProperty from "./components/onSellProperty";
 import OnRentProperty from "./components/onRentProperty";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,8 @@ function App() {
         <Route path="/venta" element={<OnSellProperty />} />
         <Route path="/alquiler" element={<OnRentProperty />} />
       </Routes>
+
+      <Footer />
     </>
   );
 }
