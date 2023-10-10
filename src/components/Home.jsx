@@ -19,7 +19,7 @@ const Home = () => {
         backgroundPosition: "center",
         backgroundImage: `url(${ImgBack})`,
         marginTop: "100px",
-        height: "250px",
+        height: "150px",
       }}
     >
       <Box

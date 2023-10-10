@@ -41,6 +41,14 @@ const Navbar = () => {
     setAnchorElUser(null); //  anchorElUser en null para cerrar el menú
   };
 
+  const handleSellClick = () => {
+    navigate("/venta");
+  };
+
+  const handleRentClick = () => {
+    navigate("/alquiler");
+  };
+
   const handleLogout = async () => {
     try {
       await axios.post("http://localhost:3000/api/auth/logout", null, {
@@ -102,9 +110,10 @@ const Navbar = () => {
                 backgroundColor: "rgba(200, 200, 200, 0.2)", //  el último valor para ajustar la transparencia
               },
             }}
+            onClick={handleSellClick}
           >
             <Link
-              to="/en-venta"
+              to="/venta"
               style={{
                 textDecoration: "none",
                 color: "white",
@@ -124,6 +133,7 @@ const Navbar = () => {
                 backgroundColor: "rgba(200, 200, 200, 0.2)",
               },
             }}
+            onClick={handleRentClick}
           >
             <Link
               to="/alquiler"

@@ -27,7 +27,7 @@ const GridProperty = () => {
   const limitedPropertyData = propertyData.slice(0, 4);
 
   return (
-    <Container sx={{ py: 12 }}>
+    <Container sx={{ py: 20 }}>
       <Grid container spacing={4}>
         {limitedPropertyData.map((property) => (
           <Grid item xs={12} md={6} key={property.id}>
