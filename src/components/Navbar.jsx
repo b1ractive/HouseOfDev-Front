@@ -18,19 +18,20 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userReducer";
 import PersonOffIcon from "@mui/icons-material/PersonOff";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#FE4236", // Rojo
-    },
-  },
-});
-
 const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const user = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: user.is_admin ? "#123AC8" : "#FE4236", // Cambia el color según el rol
+      },
+    },
+  });
 
   const handleClick = (e) => {
     setAnchorElUser(e.currentTarget);
@@ -200,6 +201,30 @@ const Navbar = () => {
               Contacto
             </Link>
           </Button>
+          {user.is_admin && (
+            <Button
+              color="inherit"
+              sx={{
+                textDecoration: "none",
+                color: "white",
+                fontWeight: "bold",
+                transition: "background-color 0.3s",
+                "&:hover": {
+                  backgroundColor: "rgba(200, 200, 200, 0.2)",
+                },
+              }}
+            >
+              <Link
+                to="/admin/addProperty"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                Agregar Propiedad
+              </Link>
+            </Button>
+          )}
           {user.name ? (
             <div>
               <IconButton
@@ -211,7 +236,7 @@ const Navbar = () => {
                 <Avatar
                   alt="User Avatar"
                   style={{
-                    backgroundColor: "#FF4733",
+                    backgroundColor: user.is_admin ? "#123AC8" : "#E0E0E0",
                     border: "2px solid white",
                   }}
                 />
