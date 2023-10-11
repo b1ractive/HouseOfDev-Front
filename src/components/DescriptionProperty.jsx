@@ -14,6 +14,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const DescriptionProperty = () => {
   const { propertyId } = useParams();
@@ -24,6 +26,8 @@ const DescriptionProperty = () => {
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate);
   };
+
+  const navigate = useNavigate();
 
   const handleReserveClick = () => {
     const formattedDate = selectedDate.toString();
@@ -62,6 +66,18 @@ const DescriptionProperty = () => {
   if (!propertyDesc) {
     return <div>Cargando...</div>;
   }
+
+  // eliminar una propiedad, agregar alerta para avisar al admin
+  const handleDeleteProperty = () => {
+    axios
+      .delete(`http://localhost:3000/api/admin/deleteProperty/${propertyId}`)
+      .then((response) => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error al eliminar la propiedad", error);
+      });
+  };
 
   return (
     <div
@@ -216,9 +232,36 @@ const DescriptionProperty = () => {
               variant="contained"
               color="primary"
               onClick={handleReserveClick}
+              style={{ width: "30%" }}
             >
               Agregar Reserva
             </Button>
+            {user && user.is_admin && (
+              <div>
+                <Link to={`/admin/editProperty/${propertyDesc.id}`}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ width: "100%" }}
+                  >
+                    Editar Propiedad
+                  </Button>
+                </Link>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  style={{
+                    backgroundColor: "#FF1111",
+                    color: "white",
+                    width: "100%",
+                    marginTop: "10px",
+                  }}
+                  onClick={handleDeleteProperty}
+                >
+                  Eliminar Propiedad
+                </Button>
+              </div>
+            )}
           </DemoContainer>
         </LocalizationProvider>
       </Box>

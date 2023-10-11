@@ -1,65 +1,84 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
-  TextField,
-  Button,
-  Grid,
-  Typography,
   Container,
+  Typography,
+  TextField,
+  Checkbox,
+  Button,
+  FormControlLabel,
   Paper,
+  Grid,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
-const AddProperty = () => {
-  const [propertyData, setPropertyData] = useState({
+const EditProperty = () => {
+  const { propertyId } = useParams();
+  const [property, setProperty] = useState({
     location: "",
-    price: "",
+    price: 0,
     description: "",
     tipe: "",
-    availability: "",
+    availability: false,
     image: "",
     category: "",
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setPropertyData({
-      ...propertyData,
-      [name]: value,
-    });
-  };
-
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/api/property/${propertyId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setProperty(response.data);
+      })
+      .catch((error) => {
+        console.error("Error al cargar los datos de la propiedad", error);
+      });
+  }, [propertyId]);
 
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/admin/addProperty",
-        propertyData
-      );
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProperty({ ...property, [name]: value });
+  };
 
-      if (response.status === 201) {
-        console.log("Propiedad agregada con éxito");
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Error al agregar la propiedad", error);
-    }
+  const handleCheckboxChange = (e) => {
+    const { name } = e.target;
+    setProperty({ ...property, [name]: e.target.checked });
+  };
+
+  const handleSaveProperty = () => {
+    axios
+      .put(
+        `http://localhost:3000/api/admin/editProperty/${propertyId}`,
+        property
+      )
+      .then((response) => {
+        navigate(`/`);
+      })
+      .catch((error) => {
+        console.error("Error al guardar la propiedad", error);
+      });
   };
 
   return (
     <Container style={{ marginTop: "90px" }}>
       <Paper elevation={20} style={{ padding: "20px" }}>
         <Typography
-          style={{ fontFamily: "Montserrat", fontWeight: "700" }}
+          style={{
+            fontFamily: "Montserrat",
+            fontWeight: "700",
+            marginBottom: "20px",
+          }}
           variant="h4"
           gutterBottom
         >
-          Agregar Propiedad
+          Editar Propiedad
         </Typography>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSaveProperty}>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -68,7 +87,7 @@ const AddProperty = () => {
                 variant="outlined"
                 fullWidth
                 required
-                value={propertyData.tipe}
+                value={property.tipe}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -79,7 +98,7 @@ const AddProperty = () => {
                 variant="outlined"
                 fullWidth
                 required
-                value={propertyData.location}
+                value={property.location}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -90,7 +109,7 @@ const AddProperty = () => {
                 variant="outlined"
                 fullWidth
                 required
-                value={propertyData.price}
+                value={property.price}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -101,7 +120,7 @@ const AddProperty = () => {
                 variant="outlined"
                 fullWidth
                 required
-                value={propertyData.category}
+                value={property.category}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -114,11 +133,10 @@ const AddProperty = () => {
                 required
                 multiline
                 rows={4}
-                value={propertyData.description}
+                value={property.description}
                 onChange={handleInputChange}
               />
             </Grid>
-
             <Grid item xs={12} sm={6}>
               <TextField
                 name="availability"
@@ -126,7 +144,7 @@ const AddProperty = () => {
                 variant="outlined"
                 fullWidth
                 required
-                value={propertyData.availability}
+                value={property.availability}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -137,20 +155,18 @@ const AddProperty = () => {
                 variant="outlined"
                 fullWidth
                 required
-                value={propertyData.image}
+                value={property.image}
                 onChange={handleInputChange}
               />
             </Grid>
-
             <Grid item xs={12}>
               <Button
-                type="submit"
                 variant="contained"
                 color="primary"
+                onClick={handleSaveProperty}
                 fullWidth
-                style={{ marginTop: "20px" }}
               >
-                Agregar Propiedad
+                Guardar
               </Button>
             </Grid>
           </Grid>
@@ -160,4 +176,4 @@ const AddProperty = () => {
   );
 };
 
-export default AddProperty;
+export default EditProperty;

@@ -231,7 +231,7 @@ const Navbar = () => {
                   color: "white",
                 }}
               >
-                Agregar Propiedad
+                ADMIN
               </Link>
             </Button>
           )}
