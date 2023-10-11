@@ -10,8 +10,11 @@ import { setUser } from "./redux/userReducer";
 import UserProfileView from "./components/userProfileView";
 import GridProperty from "./components/Grid/Grid";
 import DescriptionProperty from "./components/DescriptionProperty";
+import Footer from "./components/Footer/Footer";
+import AddProperty from "./components/AddProperty";
 import OnSellProperty from "./components/onSellProperty";
 import OnRentProperty from "./components/onRentProperty";
+import EditProperty from "./components/EditProperty";
 import Footer from "./components/Footer/Footer";
 import Favorites from "./components/Favorites/Favorite";
 
@@ -54,6 +57,11 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/venta" element={<OnSellProperty />} />
         <Route path="/alquiler" element={<OnRentProperty />} />
+        <Route path="/admin/addProperty" element={<AddProperty />} />
+        <Route
+          path="/admin/editProperty/:propertyId"
+          element={<EditProperty />}
+        />
       </Routes>
 
       <Footer />

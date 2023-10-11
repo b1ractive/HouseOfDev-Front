@@ -102,7 +102,8 @@ const UserProfile = () => {
           style={{ marginBottom: "16px" }}
           label="Teléfono"
           variant="outlined"               
-          fullWidth
+          fullWidth         
+
           name="telephone"
           value={userTelephone || user.telephone}
           onChange={(e) => setUserTelephone(e.target.value)}
