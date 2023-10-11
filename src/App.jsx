@@ -13,6 +13,7 @@ import DescriptionProperty from "./components/DescriptionProperty";
 import OnSellProperty from "./components/onSellProperty";
 import OnRentProperty from "./components/onRentProperty";
 import Footer from "./components/Footer/Footer";
+import Favorites from "./components/Favorites/Favorite";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/property/:propertyId" element={<DescriptionProperty />} />
         <Route path="/profile" element={<UserProfileView />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/venta" element={<OnSellProperty />} />
         <Route path="/alquiler" element={<OnRentProperty />} />
       </Routes>
