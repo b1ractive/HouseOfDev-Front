@@ -1,6 +1,9 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
@@ -11,9 +14,12 @@ import Container from "@mui/material/Container";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const GridProperty = () => {
   const [propertyData, setPropertyData] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     axios
@@ -23,6 +29,23 @@ const GridProperty = () => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+  const toggleFavorite = async (propertyId) => {
+    try {
+      const userId = user.id;
+      const url = `http://localhost:3000/api/favorite/${userId}/favorite/add`;
+
+      if (favorites.includes(propertyId)) {
+        const newFavorites = favorites.filter((id) => id !== propertyId);
+        setFavorites(newFavorites);
+      } else {
+        setFavorites([...favorites, propertyId]);
+      }
+      await axios.post(url, { propertyId });
+    } catch (error) {
+      console.error("Error al agregar/quitar favorito:", error);
+    }
+  };
 
   const limitedPropertyData = propertyData.slice(0, 4);
 
@@ -92,6 +115,16 @@ const GridProperty = () => {
                       {property.category}
                     </Typography>
                   </Box>
+                  <IconButton
+                    onClick={() => toggleFavorite(property.id)}
+                    color="primary"
+                  >
+                    {favorites.includes(property.id) ? (
+                      <FavoriteIcon />
+                    ) : (
+                      <FavoriteBorderIcon />
+                    )}
+                  </IconButton>
                 </CardContent>
               </Card>
             </CardActionArea>

@@ -11,6 +11,7 @@ import UserProfileView from "./components/userProfileView";
 import GridProperty from "./components/Grid/Grid";
 import DescriptionProperty from "./components/DescriptionProperty";
 import Footer from "./components/Footer/Footer";
+import Favorites from "./components/Favorites/Favorite";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/property/:propertyId" element={<DescriptionProperty />} />
         <Route path="/profile" element={<UserProfileView />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
 
       <Footer />
