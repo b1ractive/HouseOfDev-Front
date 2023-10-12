@@ -16,6 +16,7 @@ import OnSellProperty from "./components/onSellProperty";
 import OnRentProperty from "./components/onRentProperty";
 import EditProperty from "./components/EditProperty";
 import Favorites from "./components/Favorites/Favorite";
+import ContactPage from "./components/Contact";
 import PropertySearch from "./components/Search/Search";
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/profile" element={<UserProfileView />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/venta" element={<OnSellProperty />} />
+        <Route path="/contacto" element={<ContactPage />} />
         <Route path="/alquiler" element={<OnRentProperty />} />
         <Route path="/admin/addProperty" element={<AddProperty />} />
         <Route

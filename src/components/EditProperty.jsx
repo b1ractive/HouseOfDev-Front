@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+
 import {
   Container,
   Typography,
@@ -57,10 +59,14 @@ const EditProperty = () => {
         property
       )
       .then((response) => {
-        navigate(`/`);
+        toast.success("Propiedad actualizada!");
+        setTimeout(() => {
+          navigate("/");
+        }, 2400);
       })
       .catch((error) => {
         console.error("Error al guardar la propiedad", error);
+        toast.error("Error al actualizar propiedad.");
       });
   };
 
@@ -78,6 +84,7 @@ const EditProperty = () => {
         >
           Editar Propiedad
         </Typography>
+        <Toaster position="top-center" reverseOrder={false} />
         <form onSubmit={handleSaveProperty}>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6}>

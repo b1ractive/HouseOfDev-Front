@@ -149,50 +149,7 @@ const Navbar = () => {
               Alquiler
             </Link>
           </Button>
-          <Button
-            color="inherit"
-            sx={{
-              textDecoration: "none",
-              color: "white",
-              fontWeight: "bold",
-              transition: "background-color 0.3s",
-              "&:hover": {
-                backgroundColor: "rgba(200, 200, 200, 0.2)",
-              },
-            }}
-          >
-            <Link
-              to="/servicios"
-              style={{
-                textDecoration: "none",
-                color: "white",
-              }}
-            >
-              Nuestros Servicios
-            </Link>
-          </Button>
-          <Button
-            color="inherit"
-            sx={{
-              textDecoration: "none",
-              color: "white",
-              fontWeight: "bold",
-              transition: "background-color 0.3s",
-              "&:hover": {
-                backgroundColor: "rgba(200, 200, 200, 0.2)",
-              },
-            }}
-          >
-            <Link
-              to="/nosotros"
-              style={{
-                textDecoration: "none",
-                color: "white",
-              }}
-            >
-              Nosotros
-            </Link>
-          </Button>
+
           <Button
             color="inherit"
             sx={{

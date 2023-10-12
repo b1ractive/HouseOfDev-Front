@@ -3,6 +3,10 @@ import { Paper, TextField, Button, Typography, Avatar } from "@mui/material";
 import axios from "axios";
 import { setUser } from "../redux/userReducer";
 import { useDispatch, useSelector } from "react-redux";
+import PersonIcon from "@mui/icons-material/Person";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
+import toast, { Toaster } from "react-hot-toast";
 
 const UserProfile = () => {
   const user = useSelector((state) => state.user);
@@ -17,7 +21,7 @@ const UserProfile = () => {
     setEditMode(true);
   };
 
-  const handleSaveChanges = () => {  
+  const handleSaveChanges = () => {
     const editedUser = {
       name: userName || user.name,
       last_name: userLastName || user.last_name,
@@ -32,16 +36,19 @@ const UserProfile = () => {
       .then((response) => {
         console.log(response.data);
         dispatch(setUser(response.data));
+        toast.success("Cambios guardados con éxito!");
 
-        setEditMode(false); // Desactivar el modo de edición
+        setEditMode(false);
       })
       .catch((error) => {
         console.error("Error al actualizar el perfil:", error);
+        toast.error("Error al guardar cambios.")
       });
   };
 
   return (
     <Paper
+      elevation={12}
       style={{
         maxWidth: 600,
         margin: "0 auto",
@@ -51,23 +58,20 @@ const UserProfile = () => {
         alignItems: "center",
         marginTop: "70px",
       }}
-      elevation={3}
     >
       <Avatar
+        alt="User Avatar"
         style={{
           width: "80px",
           height: "80px",
           marginBottom: "16px",
         }}
-        alt="User Avatar"
       />
       <Typography variant="h5" gutterBottom>
         Perfil de Usuario
       </Typography>
-      <form
-        style={{ width: "100%", marginTop: "8px" }}
-        onSubmit={(e) => e.preventDefault()}
-      >
+      <Toaster position="top-center" reverseOrder={false} />
+      <form style={{ width: "100%", marginTop: "8px" }}>
         <TextField
           style={{ marginBottom: "16px" }}
           label="Nombre"
@@ -77,6 +81,11 @@ const UserProfile = () => {
           value={userName || user.name}
           onChange={(e) => setUserName(e.target.value || "")}
           disabled={!editMode}
+          InputProps={{
+            startAdornment: (
+              <PersonIcon color="primary" style={{ marginRight: "8px" }} />
+            ),
+          }}
         />
         <TextField
           style={{ marginBottom: "16px" }}
@@ -87,6 +96,11 @@ const UserProfile = () => {
           value={userLastName || user.last_name}
           onChange={(e) => setUserLastName(e.target.value)}
           disabled={!editMode}
+          InputProps={{
+            startAdornment: (
+              <PersonIcon color="primary" style={{ marginRight: "8px" }} />
+            ),
+          }}
         />
         <TextField
           style={{ marginBottom: "16px" }}
@@ -97,31 +111,34 @@ const UserProfile = () => {
           value={userEmail || user.email}
           onChange={(e) => setUserEmail(e.target.value)}
           disabled={!editMode}
+          InputProps={{
+            startAdornment: (
+              <EmailIcon color="primary" style={{ marginRight: "8px" }} />
+            ),
+          }}
         />
         <TextField
           style={{ marginBottom: "16px" }}
           label="Teléfono"
-          variant="outlined"               
-          fullWidth         
-
+          variant="outlined"
+          fullWidth
           name="telephone"
           value={userTelephone || user.telephone}
           onChange={(e) => setUserTelephone(e.target.value)}
           disabled={!editMode}
+          InputProps={{
+            startAdornment: (
+              <PhoneIcon color="primary" style={{ marginRight: "8px" }} />
+            ),
+          }}
         />
-        {editMode ? (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSaveChanges}
-          >
-            Guardar Cambios
-          </Button>
-        ) : (
-          <Button variant="contained" color="primary" onClick={handleEditClick}>
-            Editar Perfil
-          </Button>
-        )}
+        <Button
+          variant={editMode ? "contained" : "contained"}
+          color="primary"
+          onClick={editMode ? handleSaveChanges : handleEditClick}
+        >
+          {editMode ? "Guardar Cambios" : "Editar Perfil"}
+        </Button>
       </form>
     </Paper>
   );

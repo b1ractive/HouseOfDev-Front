@@ -14,6 +14,7 @@ import ImgBack from "../assets/Brush-2.png";
 import ImgHouse from "../assets/HouseOfDevLogo.png";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userReducer";
+import toast, { Toaster } from "react-hot-toast";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -72,12 +73,16 @@ const LoginForm = () => {
         .then((res) => {
           dispatch(setUser(res.data));
           console.log("Login exitoso:", res.data);
-          navigate("/");
+          toast.success("Login exitoso. Redirigiendo al inicio...");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
         })
         .catch((error) => {
           if (error.response) {
             const errorMessage =
               error.response.data.message || "Error de inicio de sesión";
+            toast.error(`${errorMessage}`);
           } else {
             console.error("Error de inicio de sesión:", error);
           }
@@ -145,6 +150,7 @@ const LoginForm = () => {
                 error={!!emailError}
                 helperText={emailError}
               />
+              <Toaster position="top-center" reverseOrder={false} />
 
               <TextField
                 margin="normal"
