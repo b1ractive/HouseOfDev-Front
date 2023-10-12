@@ -79,6 +79,7 @@ const DescriptionProperty = () => {
       })
       .catch((error) => {
         console.error("Error al eliminar la propiedad", error);
+        toast.error("Error al eliminar la propiedad");
       });
   };
 

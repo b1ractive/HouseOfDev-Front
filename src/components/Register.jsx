@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ImgBack from "../assets/Brush-2.png";
 import ImgHouse from "../assets/HouseOfDevLogo.png";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -142,13 +143,19 @@ const Register = () => {
         .then((res) => {
           console.log("Registro exitoso:", res);
           if (res.status === 201) {
-            navigate("/login");
+            toast.success(
+              "Registro exitoso. Redirigiendo al inicio de sesión..."
+            );
+            setTimeout(() => {
+              navigate("/login");
+            }, 2000);
           }
         })
         .catch((error) => {
           if (error.response) {
             const errorMessage =
               error.response.data.message || "Error de inicio de sesión";
+            toast.error(`Error al registrarse: ${errorMessage}`);
           } else {
             console.error("Error de inicio de sesión:", error);
           }
@@ -253,6 +260,8 @@ const Register = () => {
                 error={!!emailError}
                 helperText={emailError}
               />
+              <Toaster position="top-center" reverseOrder={false} />
+
               <TextField
                 margin="normal"
                 required
