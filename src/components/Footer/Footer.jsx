@@ -8,18 +8,16 @@ import Link from "@mui/material/Link";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary">
+    <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="">
-        House Of Dev
-      </Link>{" "}
+      <Link color="inherit" href="/">
+        House Of Dev.
+      </Link>
       {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Footer() {
@@ -29,33 +27,26 @@ export default function Footer() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          height: "600px",
-          justifyContent: "center", // Centrar verticalmente
-          alignItems: "center",
+          minHeight: "100vh",
         }}
       >
+        <CssBaseline />
+
         <Box
           component="footer"
           sx={{
             py: 3,
-            px: 0,
+            px: 2,
             mt: "auto",
-            backgroundColor: "#FE4236",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "100%", // Establecer el ancho al 100%
+            backgroundColor: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.grey[400]
+                : theme.palette.grey[800],
           }}
         >
-          <Container
-            maxWidth="xs"
-            sx={{
-              width: "100%", // Establecer el ancho al 100%
-              padding: 0, // Cambiar el padding horizontal a 0 para que ocupe todo el ancho
-            }}
-          >
-            <Typography variant="body1">
-              Tú vivienda la encontras aca
+          <Container maxWidth="md">
+            <Typography variant="body1" align="center">
+              House Of Dev.
             </Typography>
             <Copyright />
           </Container>

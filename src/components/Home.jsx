@@ -1,66 +1,53 @@
-import * as React from "react";
+import React from "react";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
-import Box from "@mui/material/Box";
-import ImgBack from "../assets/Brush-2.png";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import fondoHOD from "../assets/fondoHOD.jpg";
 
 const Home = () => {
   return (
     <Paper
-      sx={{
-        position: "relative",
-        backgroundColor: "grey.800",
-        color: "#fff",
-        mb: 4,
+      style={{
+        backgroundImage: `url(${fondoHOD})`,
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        backgroundImage: `url(${ImgBack})`,
-        marginTop: "100px",
-        height: "150px",
+        minHeight: "91vh",
+        marginTop: "65px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        color: "black",
       }}
     >
-      <Box
-        sx={{
+      <div
+        style={{
           position: "absolute",
           top: 0,
           bottom: 0,
           right: 0,
           left: 0,
-          backgroundColor: "rgba(0,0,0,.3)",
+          backgroundColor: "rgba(0, 0, 0, 0.3)",
         }}
-      />
-      <Grid container>
-        <Grid item md={6}>
-          <Box
-            sx={{
-              position: "relative",
-              p: { xs: 3, md: 6 },
-              pr: { md: 0 },
-            }}
-          >
-            <Typography
-              component="h1"
-              variant="h3"
-              color="inherit"
-              gutterBottom
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
-            >
-              Bienvenidos
-            </Typography>
-            <Typography
-              variant="h5"
-              color="inherit"
-              paragraph
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
-            >
-              Tú nueva vivienda esta aquí.
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
+      ></div>
+      <Container
+        maxWidth="md"
+        sx={{
+          fontFamily: "Montserrat, sans-serif",
+          textShadow: "2px 2px 4px rgba(255, 255, 255, 1.9)",
+          fontSize: "3rem", // Tamaño de fuente
+          lineHeight: 0.2, // Espaciado entre líneas
+          textAlign: "left",
+          marginBottom: "150px",
+          marginRight: "390px",
+        }}
+      >
+        <Typography variant="h2" gutterBottom>
+          Bienvenidos.
+        </Typography>
+        <Typography variant="h4">Tu nuevo hogar está aquí.</Typography>
+      </Container>
     </Paper>
   );
 };

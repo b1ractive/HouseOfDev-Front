@@ -306,8 +306,9 @@ const Register = () => {
                   mt: 3,
                   mb: 2,
                   borderRadius: "16px",
-                  border: "1px solid #0074e4",
+                  border: "2px solid #0074e4",
                   fontFamily: "Montserrat, sans-serif",
+                  fontWeight: "1000",
                 }}
                 disabled={!areAllFieldsCompleted()}
               >

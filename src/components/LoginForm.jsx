@@ -115,10 +115,10 @@ const LoginForm = () => {
           >
             <Typography
               component="h1"
-              variant="h5"
+              variant="h4"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
-              Crear Cuenta
+              Iniciar Sesión
             </Typography>
             {loginError && (
               <Typography color="error" variant="body2">
@@ -170,8 +170,9 @@ const LoginForm = () => {
                   mt: 3,
                   mb: 2,
                   borderRadius: "16px",
-                  border: "1px solid #0074e4",
+                  border: "2px solid #0074e4",
                   fontFamily: "Montserrat, sans-serif",
+                  fontWeight: "1000",
                 }}
                 disabled={!areAllFieldsCompleted()}
               >

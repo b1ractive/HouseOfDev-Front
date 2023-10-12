@@ -9,6 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddProperty = () => {
   const [propertyData, setPropertyData] = useState({
@@ -42,7 +43,11 @@ const AddProperty = () => {
 
       if (response.status === 201) {
         console.log("Propiedad agregada con éxito");
-        navigate("/");
+        toast.success("Propiedad agregada con éxito!");
+
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       }
     } catch (error) {
       console.error("Error al agregar la propiedad", error);
@@ -59,6 +64,7 @@ const AddProperty = () => {
         >
           Agregar Propiedad
         </Typography>
+
         <form onSubmit={handleSubmit}>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6}>
@@ -154,6 +160,7 @@ const AddProperty = () => {
               </Button>
             </Grid>
           </Grid>
+          <Toaster position="top-center" reverseOrder={false} />
         </form>
       </Paper>
     </Container>
