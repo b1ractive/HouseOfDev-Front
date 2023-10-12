@@ -17,6 +17,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userReducer";
 import PersonOffIcon from "@mui/icons-material/PersonOff";
+import PropertySearch from "./Search/Search";
+import SearchPrice from "./Search/SearchPrice";
 
 const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -99,6 +101,8 @@ const Navbar = () => {
               HOD.
             </Link>
           </Typography>
+
+          <PropertySearch />
           <Button
             color="inherit"
             sx={{
