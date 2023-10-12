@@ -16,6 +16,8 @@ import { useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
+import IconButton from "@mui/material/IconButton";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const DescriptionProperty = () => {
   const { propertyId } = useParams();
@@ -81,6 +83,25 @@ const DescriptionProperty = () => {
         console.error("Error al eliminar la propiedad", error);
         toast.error("Error al eliminar la propiedad");
       });
+  };
+
+  const handleAddToFavorites = () => {
+    if (user && user.id) {
+      axios
+        .post(`http://localhost:3000/api/favorite/${user.id}/favorite/add`, {
+          propertyId: propertyId,
+        })
+        .then((response) => {
+          console.log("Propiedad agregada a favoritos:", response.data);
+          toast.success("Propiedad agregada a favoritos con éxito");
+        })
+        .catch((error) => {
+          console.error("Error al agregar a favoritos:", error);
+          toast.error("Ya se encuentra en tus favoritos");
+        });
+    } else {
+      toast.error("Debes estar logueado para agregar a favoritos");
+    }
   };
 
   return (
@@ -240,6 +261,13 @@ const DescriptionProperty = () => {
             >
               Agregar Reserva
             </Button>
+            <IconButton
+              color="primary"
+              onClick={handleAddToFavorites}
+              aria-label="Agregar a Favoritos"
+            >
+              <FavoriteIcon />
+            </IconButton>
             {user && user.is_admin && (
               <div>
                 <Link to={`/admin/editProperty/${propertyDesc.id}`}>
