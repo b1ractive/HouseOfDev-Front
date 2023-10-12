@@ -231,7 +231,7 @@ const Navbar = () => {
                   color: "white",
                 }}
               >
-                ADMIN
+                OPCIONES ADMIN
               </Link>
             </Button>
           )}
@@ -246,7 +246,7 @@ const Navbar = () => {
                 <Avatar
                   alt="User Avatar"
                   style={{
-                    backgroundColor: user.is_admin ? "#123AC8" : "#E0E0E0",
+                    backgroundColor: user.is_admin ? "#123AC8" : "#FE4236",
                     border: "2px solid white",
                   }}
                 />

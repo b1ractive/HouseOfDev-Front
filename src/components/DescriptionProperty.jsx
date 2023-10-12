@@ -72,7 +72,10 @@ const DescriptionProperty = () => {
     axios
       .delete(`http://localhost:3000/api/admin/deleteProperty/${propertyId}`)
       .then((response) => {
-        navigate("/");
+        toast.success("Propiedad eliminada con éxito!");
+        setTimeout(() => {
+          navigate("/");
+        }, 2400);
       })
       .catch((error) => {
         console.error("Error al eliminar la propiedad", error);

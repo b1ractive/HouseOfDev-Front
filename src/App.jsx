@@ -15,7 +15,6 @@ import AddProperty from "./components/AddProperty";
 import OnSellProperty from "./components/onSellProperty";
 import OnRentProperty from "./components/onRentProperty";
 import EditProperty from "./components/EditProperty";
-import Footer from "./components/Footer/Footer";
 import Favorites from "./components/Favorites/Favorite";
 
 function App() {
