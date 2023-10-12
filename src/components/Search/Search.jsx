@@ -3,6 +3,7 @@ import axios from "axios";
 import SearchPrice from "./SearchPrice";
 import { Link } from "react-router-dom";
 import "./PropertySearch.css";
+import SearchIcon from "@mui/icons-material/Search";
 
 const PropertySearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,7 +46,6 @@ const PropertySearch = () => {
 
   return (
     <div>
-      <h1>Buscar Propiedades</h1>
       <SearchPrice onSearch={onSearch} />
       <input
         type="text"
@@ -54,7 +54,6 @@ const PropertySearch = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <button onClick={handleSearch}>Buscar</button>
-
       {loading && <p>Cargando resultados...</p>}
 
       {searchResults.length > 0 && (

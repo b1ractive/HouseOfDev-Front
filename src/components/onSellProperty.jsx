@@ -8,8 +8,6 @@ import {
   Typography,
   CardActionArea,
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import IconButton from "@mui/material/IconButton";
 
 const OnSellProperty = () => {
   const [properties, setProperties] = useState([]);
@@ -61,9 +59,6 @@ const OnSellProperty = () => {
                 Ubicación: {property.location}
               </Typography>
             </CardContent>
-            <IconButton>
-              <FavoriteIcon />
-            </IconButton>
           </Card>
         </Grid>
       ))}
